@@ -1,7 +1,7 @@
 {
   "name": "captcha-ocr",
   "version": "1.0.0",
-  "description": "",
+  "description": "利用 tesseract.js 和 sharp 实现OCR，结合油猴脚本，实现自动识别验证码并提交表单",
   "main": "ocr.js",
   "bin": {
     "ocr": "ocr.js"
@@ -9,13 +9,33 @@
   "scripts": {
     "dev": "node ocr.js"
   },
-  "keywords": ["node", "ocr", "captcha"],
+  "keywords": [
+    "node",
+    "ocr",
+    "captcha"
+  ],
   "author": "fatto",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.0",
-    "sharp": "^0.29.3",
+    "sharp": "~0.32.6",
     "tesseract.js": "^5.1.1"
+  },
+  "pkg": {
+    "assets": [
+      "ocr.js",
+      "node_modules/tesseract.js/src/worker-script/node/index.js",
+      "node_modules/sharp/lib/index.js"
+    ],
+    "scripts": [
+      "node_modules/tesseract.js/src/worker-script/node/index.js",
+      "node_modules/sharp/lib/index.js"
+    ],
+    "targets": [
+      "node18-linux-x64",
+      "node18-macos-x64",
+      "node18-win-x64"
+    ]
   }
 }
